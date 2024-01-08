@@ -1,0 +1,29 @@
+{
+  "name": "@hivestreaming/jwt-auth-examples",
+  "version": "1.0.0",
+  "description": "Reference implementation for using JWT authorization with Hive",
+  "main": "",
+  "scripts": {
+    "create-jwt:manifest": "node examples/create-jwt-manifest.js",
+    "create-jwt:regex": "node examples/create-jwt-regex.js",
+    "generate-key": "node examples/generate-rsa-key.js",
+    "generate-key:openssl": "openssl genpkey -algorithm RSA -out ./private-key.pem -pkeyopt rsa_keygen_bits:3072",
+    "publish-key": "node examples/publish-public-key.js",
+    "fetch-key": "node examples/fetch-public-key.js",
+    "eslint": "eslint --fix . --ext .js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hivestreaming/jwt-auth-examples.git"
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1",
+    "eslint": "^8.56.0",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "author": "Hive Streaming",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}

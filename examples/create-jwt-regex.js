@@ -1,17 +1,19 @@
+require('dotenv').config();
 const jsonwebtoken = require('jsonwebtoken');
 const fs = require('fs');
- 
-const privateKeyPath = './path/private-key.pem';
+
+const privateKeyPath = process.env.PRIVATE_KEY_PATH || './private-key.pem';
 
 const privateKey = fs.readFileSync(privateKeyPath, 'utf8');
- 
-const partnerId = '<partnerId>';
-const customerId = '<customerId>';
-const videoId = '<videoId>';
-const eventName = '<eventName>';
-const keyId = '<keyId>';
-const regexes = ['streaming-simulator.*(\/.*\.ts|\/.*\.m3u8|.*\.mp4)'];
- 
+
+const partnerId = process.env.HIVE_PARTNER_ID || '<partnerId>';
+const customerId = process.env.HIVE_CUSTOMER_ID || '<customerId>';
+const keyId = process.env.HIVE_PARTNER_KEY_ID || '<keyId>';
+const videoId = process.env.VIDEO_ID || '<videoId>';
+const eventName = process.env.EVENT_NAME || '<eventName>';
+const regexes = [process.env.REGEX ||  'streaming-simulator.*(.*.ts|.*.m3u8|.*.mp4)'];
+const expiry = parseInt(process.env.JWT_EXPIRY) ||  Math.floor(Date.now() / 1000) + 60 * 60 * 24 // in 24 hours (in seconds since Unix epoch)
+
 const payload = {
     iss: partnerId,
     sub: videoId,
@@ -21,12 +23,14 @@ const payload = {
     evn: eventName,
     man: [],
     reg: regexes,
-    exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24, // 24 hours
+    exp: expiry
 };
+
+console.log(`JWT payload: ${JSON.stringify(payload, null, 2)}`);
 
 const jwt = jsonwebtoken.sign(payload, privateKey, {
     algorithm: 'RS256',
-    keyid: keyId,
+    keyid: keyId
 });
 
-console.log(jwt);
+console.log(`JWT string: ${jwt}`);

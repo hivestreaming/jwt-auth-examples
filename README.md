@@ -11,25 +11,44 @@ Code snippets repository to facilitate integration with Hive Services using JWT
 > The following snippets only use with data that Hive share with their partners as the **partnerId** and the **partnerToken**
 
 ### Step 1
-Create a private key that will be used to encode the Json Web Token(JWT).
+Create a private RSA key that will be used to encode the Json Web Token (JWT).
 
-> node ./examples/create-private-key.js
+```
+npm run generate-key
+```
+
+Alternatively you can also generate a key via `openssl` - see command:
+
+```
+npm run generate-key:openssl
+```
 
 ### Step 2
-Publish a public key that will be used by Hive to decode the JWT.
+Publish the public RSA key that will be used by Hive to decode the JWT.
 
-> node ./examples/publish-public-key.js
+```
+npm run publish-key
+```
 
-### Step 3
-List and confirm public key stored in Hive Services.
 
-> node ./examples/fetch-public-key.js
+### Step 3 (optional)
+Fetch the public RSA to confirm it is stored in Hive public key storage.
+
+```
+npm run fetch-key
+```
+
 
 ### Step 4 | 5
 Create a JWT with manifest.
 
-> node ./examples/create-jwt-manifest.js
+```
+npm run create-jwt:manifest
+```
+
 
 Create a JWT with regex.
 
-> node ./examples/create-jwt-regex.js
+```
+npm run create-jwt:regex
+```
