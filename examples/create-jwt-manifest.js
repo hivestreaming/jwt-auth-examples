@@ -2,6 +2,10 @@ require('dotenv').config();
 const jsonwebtoken = require('jsonwebtoken');
 const fs = require('fs');
 
+/*
+  This script creates a signed JWT with payload contains a manifest.
+*/
+
 const privateKeyPath = process.env.PRIVATE_KEY_PATH || './private-key.pem';
 
 const privateKey = fs.readFileSync(privateKeyPath, 'utf8');

@@ -2,16 +2,16 @@ require('dotenv').config();
 const crypto = require('crypto');
 const fs = require('fs');
 
+/*
+  This script reads the private RSA key from the file system and posts
+  the public key details to the Hive public key storage.
+*/
+
 const partnerId = process.env.HIVE_PARTNER_ID || '<partnerId>';
 const partnerToken = process.env.HIVE_PARTNER_TOKEN || '<partnerToken>';
 const keyId = process.env.HIVE_PARTNER_KEY_ID || '<keyId>'; // recommended format: "<name>-<number>"
 const privateKeyPath = process.env.RSA_PRIVATE_KEY_PATH || './private-key.pem';
 const hiveEnvironment = process.env.HIVE_API_ENV || 'test'; // available environments: 'test' or 'prod'
-
-/*
-  This script reads the private RSA key from the file system and posts
-  the public key details to the Hive public key storage.
-*/
 
 (async function () {
     const privateKeyObject = crypto.createPrivateKey(fs.readFileSync(privateKeyPath, 'utf8'));
