@@ -26,7 +26,6 @@ const payload = {
     cid: customerId,
     evn: eventName,
     man: manifests,
-    reg: [],
     exp: expiry
 };
 
