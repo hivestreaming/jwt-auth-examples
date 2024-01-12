@@ -7,7 +7,7 @@ const fs = require('fs');
 */
 
 const { privateKey, publicKey } = crypto.generateKeyPairSync('rsa', {
-  modulusLength: 3072,
+  modulusLength: 3072, // Hive Services only support this key length
   publicKeyEncoding: {
     type: 'spki',
     format: 'pem',
