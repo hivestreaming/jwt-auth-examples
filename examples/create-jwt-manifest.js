@@ -7,19 +7,19 @@ const fs = require('fs');
 */
 
 /* Partner ID provided by Hive */
-const partnerId = process.env.HIVE_PARTNER_ID || '<partnerId>';  // TODO: use of ?? instead of ||
+const partnerId = process.env.HIVE_PARTNER_ID || '<partnerId>';
 
 /* Customer ID used to generate a customer entity in Hive Services */
 const customerId = process.env.HIVE_CUSTOMER_ID || '<customerId>';
 
 /* Unique ID for a public RSA key */
-const keyId = process.env.HIVE_PARTNER_KEY_ID || '<keyId>';
+const keyId = process.env.HIVE_PARTNER_KEY_ID || 'test-key-id-123';
 
 /* Unique video ID on the partner platform */
-const videoId = process.env.VIDEO_ID || '<videoId>';
+const videoId = process.env.VIDEO_ID || 'video-id-123';
 
 /* Name of the event that will be shown in Hive Portal */
-const eventName = process.env.EVENT_NAME || '<eventName>';
+const eventName = process.env.EVENT_NAME || 'Some descriptive name';
 
 /* List of manifest URLs of the video stream (without query parameters) */
 const manifests = process.env.MANIFESTS?.split(',')?.map(item => item?.trim()) ||

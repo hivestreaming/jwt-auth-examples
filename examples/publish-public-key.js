@@ -7,11 +7,20 @@ const fs = require('fs');
   the public key details to the Hive public key storage.
 */
 
+/* Partner ID provided by Hive */
 const partnerId = process.env.HIVE_PARTNER_ID || '<partnerId>';
+
+/* Partner token provided by Hive */
 const partnerToken = process.env.HIVE_PARTNER_TOKEN || '<partnerToken>';
-const keyId = process.env.HIVE_PARTNER_KEY_ID || '<keyId>'; // recommended format: "<name>-<number>"
-const privateKeyPath = process.env.RSA_PRIVATE_KEY_PATH || './private-key.pem';
-const hiveEnvironment = process.env.HIVE_API_ENV || 'test'; // available environments: 'test' or 'prod'
+
+/* Unique ID for a public RSA key */
+const keyId = process.env.HIVE_PARTNER_KEY_ID || 'test-key-id-123';
+
+/* Hive API environment - prod or test */
+const hiveEnvironment = process.env.HIVE_API_ENV || 'prod';
+
+/* Path of the private RSA key */
+const privateKeyPath = process.env.PRIVATE_KEY_PATH || './private-key.pem';
 
 (async function () {
     const privateKeyObject = crypto.createPrivateKey(fs.readFileSync(privateKeyPath, 'utf8'));
