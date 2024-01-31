@@ -4,12 +4,14 @@
   "description": "Reference implementation for using JWT authorization with Hive",
   "main": "",
   "scripts": {
-    "create-jwt:manifest": "node examples/create-jwt-manifest.js",
-    "create-jwt:regex": "node examples/create-jwt-regex.js",
-    "generate-key": "node examples/generate-rsa-key.js",
+    "generate-key": "node src/generateKey/generate-rsa-key.js",
     "generate-key:openssl": "openssl genpkey -algorithm RSA -out ./private-key.pem -pkeyopt rsa_keygen_bits:3072",
-    "publish-key": "node examples/publish-public-key.js",
-    "fetch-key": "node examples/fetch-public-key.js",
+    "create-jwt:manifest": "node src/jwt/create-jwt-manifest.js",
+    "create-jwt:regex": "node src/jwt/create-jwt-regex.js",
+    "publish-key": "node src/publicKeyAPI/public-key-post.js",
+    "fetch-key": "node src/publicKeyAPI/public-key-get.js",    
+    "list-keys": "node src/publicKeyAPI/public-key-list-all.js",
+    "delete-key": "node src/publicKeyAPI/public-key-delete.js",
     "eslint": "eslint --fix . --ext .js"
   },
   "repository": {

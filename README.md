@@ -58,3 +58,17 @@ Create a JWT with regex
 ```
 npm run create-jwt:regex
 ```
+
+## Additional scripts
+
+Delete (invalidate) public key
+
+```
+npm run delete-key
+```
+
+List all stored public keys
+
+```
+npm run list-keys
+```
