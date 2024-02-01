@@ -10,65 +10,66 @@ Code snippets repository to facilitate integration with Hive Services using JWT
 > [!IMPORTANT]  
 > Prerequisite for using the code snippets - having received a partner ID and partner API token from Hive
 
-### Setup
-Install dependencies
+
+## Pre-requisites
+Install dependencies:
 ```
 npm install
 ```
 
+
+## Integration steps
+
 ### Step 1
-Create a private RSA key that will be used to encode the Json Web Token (JWT)
-
+Create a private RSA key that will be used to encode the Json Web Token:
 ```
-npm run generate-key
+npm run generate-rsa-key
 ```
 
-Alternatively you can also generate a key via `openssl` - see command
-
+Alternatively you can also generate a key via `openssl` - see command:
 ```
-npm run generate-key:openssl
+npm run generate-rsa-key:openssl
 ```
 
 ### Step 2
-Publish the public RSA key that will be used by Hive to decode the JWT
-
+Publish the public RSA key that will be used by Hive to decode the JWT:
 ```
-npm run publish-key
-```
-
-
-### Step 3 (optional)
-Fetch the public RSA to confirm it is stored in Hive public key storage
-
-```
-npm run fetch-key
+npm run public-key-post
 ```
 
-
-### Step 4 | 5
-Create a JWT with manifest
-
+### Step 3
+Create a JWT with manifest:
 ```
 npm run create-jwt:manifest
 ```
 
-
-Create a JWT with regex
-
+Or create a JWT with regex:
 ```
 npm run create-jwt:regex
 ```
 
-## Additional scripts
 
-Delete (invalidate) public key
+## Public RSA key management:
 
+Scripts available for public RSA key management.
+
+
+Publish key:
 ```
-npm run delete-key
+npm run public-key-post
 ```
 
-List all stored public keys
-
+Fetch key:
 ```
-npm run list-keys
+npm run public-key-get
+```
+
+List all stored keys:
+```
+npm run public-key-get-all
+```
+
+Delete (invalidate) key:
+```
+npm run public-key-delete
 ```
