@@ -56,7 +56,7 @@ const privateKeyPath = process.env.PRIVATE_KEY_PATH || './private-key.pem';
             console.log('Publishing successful');
         } else {
             console.log('Publishing failed, response status:', response.status);
-            const responseBody = await response.json();
+            const responseBody = await response.json().catch(() => undefined);
             console.log('Response body', responseBody);
         }
     } catch (err) {
