@@ -33,8 +33,11 @@ const privateKeyPath = process.env.PRIVATE_KEY_PATH || './private-key.pem';
 
 const privateKey = fs.readFileSync(privateKeyPath, 'utf8');
 
+/* Issuer in the format `partner://<partnerId>`, old format `<partnerId>`, or an external Issuer */
+const issuer = `partner://${partnerId}`;
+
 const payload = {
-    iss: partnerId,
+    iss: issuer,
     sub: videoId,
     ver: '1.0',
     aud: 'https://hivestreaming.com',
