@@ -33,7 +33,7 @@ const privateKeyPath = process.env.PRIVATE_KEY_PATH || './private-key.pem';
 
 const privateKey = fs.readFileSync(privateKeyPath, 'utf8');
 
-/* Issuer in the format `partner://<partnerId>`, old format `<partnerId>`, or an external Issuer */
+/* Issuer in the format `partner://<partnerId>` or Partner domain if using Open ID  */
 const issuer = `partner://${partnerId}`;
 
 const payload = {
