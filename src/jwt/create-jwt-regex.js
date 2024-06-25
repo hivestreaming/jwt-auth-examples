@@ -24,11 +24,11 @@ const eventName = process.env.EVENT_NAME || 'Some descriptive name';
 /* List of regexes to match the stream manifest URLs. It will be used to create a single context
 for all playlists and segments from the same manifest. Should contain a group that specifies the
 known dynamic part of the URL. */
-const manifestRegexes = process.env.MANIFEST_REGEXES?.split(',')?.map(item => item?.trim()) || ['streaming-simulator.*(\\/.*\\.ts|\\/.*\\.m3u8|.*\\.mp4)'];
+const manifestRegexes = process.env.MANIFEST_REGEXES?.split(',')?.map(item => item?.trim()) || ['streaming-simulator.*(\\/.*\\.m3u8|.*\\.mp4)'];
 
 /* List of regexes to match the playlist/segment URL which identifies the same
 stream/segment when the URL has different sources. */
-const qualityRegexes = process.env.QUALITY_REGEXES?.split(',')?.map(item => item?.trim()) || ['some-quality.*(\\/.*\\.ts)'];
+const qualityRegexes = process.env.QUALITY_REGEXES?.split(',')?.map(item => item?.trim()) || ['streaming-simulator.*(\\/.*\\.ts)'];
 
 /* Expiry of the JWT (in seconds since Unix epoch) */
 const expiry = parseInt(process.env.JWT_EXPIRY) ||  Math.floor(Date.now() / 1000) + 60 * 60 * 24;
@@ -61,4 +61,4 @@ const jwt = jsonwebtoken.sign(payload, privateKey, {
     keyid: keyId
 });
 
-console.log(`JWT: ${jwt}}`);
+console.log(`JWT: ${jwt}`);
