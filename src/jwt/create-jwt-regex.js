@@ -24,7 +24,7 @@ const eventName = process.env.EVENT_NAME || 'Some descriptive name';
 /* List of regexes to match the stream manifest URLs. It will be used to create a single context
 for all playlists and segments from the same manifest. Should contain a group that specifies the
 known dynamic part of the URL. */
-const regexes = process.env.REGEXES?.split(',')?.map(item => item?.trim()) || ['streaming-simulator.*(\\/.*\\.ts|\\/.*\\.m3u8|.*\\.mp4)'];
+const manifestRegexes = process.env.MANIFEST_REGEXES?.split(',')?.map(item => item?.trim()) || ['streaming-simulator.*(\\/.*\\.ts|\\/.*\\.m3u8|.*\\.mp4)'];
 
 /* List of regexes to match the playlist/segment URL which identifies the same
 stream/segment when the URL has different sources. */
@@ -49,8 +49,7 @@ const payload = {
     cid: customerId,
     evn: eventName,
     man: [],
-    reg: regexes, /* soon to be deprecated, please use the `reg_manifest` claim instead, optionally along with `reg_quality` */
-    reg_manifest: regexes,
+    reg_manifest: manifestRegexes,
     reg_quality: qualityRegexes,
     exp: expiry
 };
@@ -62,4 +61,4 @@ const jwt = jsonwebtoken.sign(payload, privateKey, {
     keyid: keyId
 });
 
-console.log(`JWT string: ${jwt}`);
+console.log(`JWT: ${jwt}}`);
