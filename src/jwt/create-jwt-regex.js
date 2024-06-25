@@ -28,7 +28,7 @@ const manifestRegexes = process.env.MANIFEST_REGEXES?.split(',')?.map(item => it
 
 /* List of regexes to match the playlist/segment URL which identifies the same
 stream/segment when the URL has different sources. */
-const qualityRegexes = process.env.QUALITY_REGEXES?.split(',')?.map(item => item?.trim()) || ['streaming-simulator.*(\\/.*\\.ts)'];
+const qualityRegexes = process.env.QUALITY_REGEXES?.split(',')?.map(item => item?.trim()) || ['streaming-simulator.*(\\/.*\\.ts|.*\\.m3u8)'];
 
 /* Expiry of the JWT (in seconds since Unix epoch) */
 const expiry = parseInt(process.env.JWT_EXPIRY) ||  Math.floor(Date.now() / 1000) + 60 * 60 * 24;
