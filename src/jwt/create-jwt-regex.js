@@ -62,8 +62,4 @@ const jwt = jsonwebtoken.sign(payload, privateKey, {
     keyid: keyId
 });
 
-console.log(`JWT string`);
-console.log(jwt);
-
-console.log("")
-console.log("https://streaming-simulator-prod.hivestreaming.com/generic/live/beta-big-bunny-multi/manifest.m3u8")
+console.log(`JWT string: ${jwt}`);
