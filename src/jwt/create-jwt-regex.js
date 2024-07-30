@@ -49,9 +49,9 @@ const payload = {
     cid: customerId,
     evn: eventName,
     man: [],
-    // reg: manifestRegexes,        // `reg` claim to be used with Hive Plugin Core <= v11.x
-    reg_manifest: manifestRegexes,  // `reg_manifest` works with Hive Plugin Core >= v12.x
-    reg_quality: qualityRegexes,    // `reg_quality` works with Hive Plugin Core >= v12.x
+    // reg: manifestRegexes,        // `reg` claim to be used with Hive Plugin Core < v11.1.0
+    reg_manifest: manifestRegexes,  // `reg_manifest` works with Hive Plugin Core >= v11.1.0
+    reg_quality: qualityRegexes,    // `reg_quality` works with Hive Plugin Core >= v11.1.0
     exp: expiry
 };
 
