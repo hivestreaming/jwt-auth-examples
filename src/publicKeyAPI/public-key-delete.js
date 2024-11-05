@@ -31,7 +31,7 @@ const hiveEnvironment = process.env.HIVE_API_ENV || 'prod';
         if (response.ok) {
             console.log('Deleting successful');
         } else {
-            console.log('Deleting failed, response status:', response.status);
+            console.log('Deleting failed, response status:', response.status, response.statusText);
         }
     } catch (err) {
         console.log('Error:', err);

@@ -13,10 +13,13 @@ const partnerToken = process.env.HIVE_PARTNER_TOKEN || '<partnerToken>';
 /* Hive API environment - prod or test */
 const hiveEnvironment = process.env.HIVE_API_ENV || 'prod';
 
+/* Include deleted keys - true or false */
+const includeDeleted = false;
+
 (async function () {
     const url = `https://api${
         hiveEnvironment === 'prod' ? '' : '-test'
-    }.hivestreaming.com/v1/publickey/${partnerId}`;
+    }.hivestreaming.com/v1/publickey/${partnerId}?includeDeleted=${includeDeleted}`;
 
     try {
         const response = await fetch(url, {
@@ -29,7 +32,7 @@ const hiveEnvironment = process.env.HIVE_API_ENV || 'prod';
             const responseBody = await response.json().catch(() => undefined);
             console.log('Fetching successful, response:', responseBody);
         } else {
-            console.log('Fetching failed, response status:', response.status);
+            console.log('Fetching failed, response status:', response.status, response.statusText);
         }
     } catch (err) {
         console.log('Error:', err);

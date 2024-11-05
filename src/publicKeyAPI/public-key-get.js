@@ -32,7 +32,7 @@ const hiveEnvironment = process.env.HIVE_API_ENV || 'prod';
             const responseBody = await response.json().catch(() => undefined);
             console.log('Fetching successful, response:', responseBody);
         } else {
-            console.log('Fetching failed, response status:', response.status);
+            console.log('Fetching failed, response status:', response.status, response.statusText);
         }
     } catch (err) {
         console.log('Error:', err);
