@@ -16,10 +16,11 @@ const keyId = process.env.HIVE_PARTNER_KEY_ID || 'test-key-id-123';
 /* Hive API environment - prod or test */
 const hiveEnvironment = process.env.HIVE_API_ENV || 'prod';
 
+/* API Suffix to specify prod, dev or test */
+const envSuffix = hiveEnvironment === "prod" ? "" : `-${hiveEnvironment}`;
+
 (async function () {
-    const url = `https://api${
-        hiveEnvironment === 'prod' ? '' : '-test'
-    }.hivestreaming.com/v1/publickey/${partnerId}/${keyId}`;
+  const url = `https://api${envSuffix}.hivestreaming.com/v1/publickey/${partnerId}/${keyId}`;
 
     try {
         const response = await fetch(url, {
