@@ -13,10 +13,11 @@ const partnerToken = process.env.HIVE_PARTNER_TOKEN || '<partnerToken>';
 /* Hive API environment - prod or test */
 const hiveEnvironment = process.env.HIVE_API_ENV || 'prod';
 
+/* API Suffix to specify prod, dev or test */
+const envSuffix = hiveEnvironment === "prod" ? "" : `-${hiveEnvironment}`;
+
 (async function () {
-    const url = `https://api${
-        hiveEnvironment === 'prod' ? '' : '-test'
-    }.hivestreaming.com/v1/publickey/${partnerId}`;
+  const url = `https://api${envSuffix}.hivestreaming.com/v1/publickey/${partnerId}`;
 
     try {
         const response = await fetch(url, {
